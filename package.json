@@ -1,0 +1,31 @@
+{
+  "name": "playwright_assignment",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "cucumber-js",
+    "test:headed": "HEADLESS=false cucumber-js",
+    "test:tags": "cucumber-js --tags",
+    "test:all": "npx cucumber-js --parallel 1 -f allure-cucumberjs/reporter --format-options '{\"resultsDir\": \"allure-results\"}'",
+    "test:smoke": "npx cucumber-js --parallel 1 --tags '@smoke' -f allure-cucumberjs/reporter --format-options '{\"resultsDir\": \"allure-results\"}'",
+    "report:serve": "allure serve allure-results"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@cucumber/cucumber": "^12.9.0",
+    "@playwright/test": "^1.60.0",
+    "@types/node": "^25.9.1",
+    "allure-cucumberjs": "^3.9.0",
+    "allure-playwright": "^3.9.0",
+    "ts-node": "^10.9.2"
+  },
+  "dependencies": {
+    "@faker-js/faker": "^10.4.0",
+    "allure-js-commons": "^3.9.0",
+    "typescript": "^6.0.3"
+  }
+}

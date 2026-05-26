@@ -1,0 +1,33 @@
+
+# Playwright
+node_modules/
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+/playwright/.auth/
+/reports/
+# Allure Testing Framework Raw Artifacts
+allure-results/
+allure-report/
+
+# Local IDE Configuration Files
+.vscode/
+# Dependencies (BANNED from submission)
+node_modules/
+
+# TypeScript Build & IDE Locks
+.vscode/
+*.tsbuildinfo
+
+# Playwright Test Execution Assets
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+/playwright/.auth/
+
+# Custom Framework Reports & Artifact Pipelines
+/reports/
+allure-results/
+allure-report/
