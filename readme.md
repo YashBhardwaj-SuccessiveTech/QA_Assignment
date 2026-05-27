@@ -19,7 +19,7 @@ The test suite is organized to separate concerns between test scenarios, step de
 
 Simple architecture flow:
 
-Feature files (Gherkin) -> Step Definitions (`src/steps`) -> Playwright helpers (`src/lib`) -> External systems (API/DB)
+Feature files (Gherkin) -> Step Definitions (`src/steps`) -> Playwright pages (`src/pages`)
 
 This separation enables reuse, easy tagging, and targeted runs.
 
@@ -80,18 +80,6 @@ npm run report:serve
 
 Notes:
 - `test:all` uses the `allure-cucumberjs` reporter and writes to `allure-results/`.
-- Use `HEADLESS=false npm run test` or `npm run test:headed` to run tests with a visible browser.
-
-## Environment & Configuration
-
-- Use environment variables for secrets or environment-specific configuration (e.g., API base URL, credentials). Example variables to set before running tests:
-
-```bash
-export API_BASE_URL=https://api.example.local
-export ENV=staging
-```
-
-- For CI, inject secrets via the CI provider's secrets manager rather than committing them.
 
 ## Reporting
 
