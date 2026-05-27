@@ -29,6 +29,7 @@ export class HomePage {
   readonly productCards: Locator;
   readonly loggedInBanner: Locator;
   readonly logoutButton: Locator;
+  readonly featuredItemsHeader: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -85,6 +86,9 @@ export class HomePage {
 
     this.logoutButton = page.getByRole("link", {
       name: "Logout",
+    });
+    this.featuredItemsHeader = page.getByRole("heading", {
+      name: "Features Items",
     });
   }
 
@@ -209,5 +213,11 @@ export class HomePage {
   async verifySignupLoginLinkVisible(): Promise<void> {
     // State Reversion Check: Ensure the link is visible and interactive again
     await expect(this.signupLogin).toBeVisible();
+  }
+  async navigateToLogin(): Promise<void> {
+    await this.page.goto(`${EnvironmentConfig.web.baseUrl}/login`);
+  }
+  async verifyLayoutTextResilience(): Promise<void> {
+    await expect(this.featuredItemsHeader).toBeVisible();
   }
 }
