@@ -1,41 +1,31 @@
-import {
-  World,
-  IWorldOptions,
-  setWorldConstructor
-} from "@cucumber/cucumber";
+import { World, IWorldOptions, setWorldConstructor } from "@cucumber/cucumber";
 
-import type {
-  Page,
-  BrowserContext,
-  APIRequestContext
-} from "@playwright/test";
+import type { Page, BrowserContext, APIRequestContext } from "@playwright/test";
 
 import { Logger } from "../utils/logger.js";
 import { ProductsPage } from "../pages/ProductPage.js";
 
 export interface UserData {
+  name: string;
 
-    name: string;
+  email: string;
 
-    email: string;
+  password: string;
 
-    password: string;
+  firstName: string;
 
-    firstName: string;
+  lastName: string;
 
-    lastName: string;
+  address: string;
 
-    address: string;
+  state: string;
 
-    state: string;
+  city: string;
 
-    city: string;
+  zipcode: string;
 
-    zipcode: string;
-
-    mobileNumber: string;
+  mobileNumber: string;
 }
-
 
 import { HomePage } from "../pages/HomePage.js";
 import { LoginPage } from "../pages/LoginPage.js";
@@ -46,7 +36,6 @@ import { ContactPage } from "../pages/ContactPage.js";
 import { AutomationExerciseApiController } from "../api/endpoints/ApiController.js";
 
 export class CustomWorld extends World {
-
   page!: Page;
 
   context!: BrowserContext;
@@ -69,12 +58,11 @@ export class CustomWorld extends World {
     loginPage: LoginPage;
     accountPage: AccountPage;
     productsPage: ProductsPage;
-    cartPage : CartPage;
-    contactPage: ContactPage
+    cartPage: CartPage;
+    contactPage: ContactPage;
   };
 
   constructor(options: IWorldOptions) {
-
     super(options);
   }
 }

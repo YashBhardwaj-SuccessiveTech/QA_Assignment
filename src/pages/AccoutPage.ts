@@ -2,180 +2,153 @@ import { expect, type Locator, type Page } from "@playwright/test";
 import { UserData } from "../types/userData.js";
 
 export class AccountPage {
+  readonly page: Page;
 
-    readonly page: Page;
+  // Account Information Section
+  readonly accountInformationText: Locator;
 
-    // Account Information Section
-    readonly accountInformationText: Locator;
+  // Title
+  readonly mrTitleRadio: Locator;
+
+  // User Credentials
+  readonly passwordInput: Locator;
+
+  // DOB
+  readonly dayDropdown: Locator;
+  readonly monthDropdown: Locator;
+  readonly yearDropdown: Locator;
+
+  // Checkboxes
+  readonly newsletterCheckbox: Locator;
+  readonly offersCheckbox: Locator;
+
+  // Personal Information
+  readonly firstNameInput: Locator;
+  readonly lastNameInput: Locator;
+  readonly addressInput: Locator;
+
+  // Address Information
+  readonly countryDropdown: Locator;
+  readonly stateInput: Locator;
+  readonly cityInput: Locator;
+  readonly zipcodeInput: Locator;
+  readonly mobileNumberInput: Locator;
+
+  // Buttons
+  readonly createAccountButton: Locator;
+
+  // Success Message
+  readonly accountCreatedText: Locator;
+  readonly continueButton: Locator;
+
+  constructor(page: Page) {
+    this.page = page;
+
+    // Account Info
+    this.accountInformationText = page.getByText("Enter Account Information");
 
     // Title
-    readonly mrTitleRadio: Locator;
+    this.mrTitleRadio = page.locator("#id_gender1");
 
-    // User Credentials
-    readonly passwordInput: Locator;
+    // Credentials
+    this.passwordInput = page.locator("#password");
 
     // DOB
-    readonly dayDropdown: Locator;
-    readonly monthDropdown: Locator;
-    readonly yearDropdown: Locator;
+    this.dayDropdown = page.locator("#days");
+
+    this.monthDropdown = page.locator("#months");
+
+    this.yearDropdown = page.locator("#years");
 
     // Checkboxes
-    readonly newsletterCheckbox: Locator;
-    readonly offersCheckbox: Locator;
+    this.newsletterCheckbox = page.locator("#newsletter");
 
-    // Personal Information
-    readonly firstNameInput: Locator;
-    readonly lastNameInput: Locator;
-    readonly addressInput: Locator;
+    this.offersCheckbox = page.locator("#optin");
 
-    // Address Information
-    readonly countryDropdown: Locator;
-    readonly stateInput: Locator;
-    readonly cityInput: Locator;
-    readonly zipcodeInput: Locator;
-    readonly mobileNumberInput: Locator;
+    // Personal Info
+    this.firstNameInput = page.locator("#first_name");
 
-    // Buttons
-    readonly createAccountButton: Locator;
+    this.lastNameInput = page.locator("#last_name");
 
-    // Success Message
-    readonly accountCreatedText: Locator;
-    readonly continueButton: Locator;
+    this.addressInput = page.locator("#address1");
 
-    constructor(page: Page) {
+    // Address Info
+    this.countryDropdown = page.locator("#country");
 
-        this.page = page;
+    this.stateInput = page.locator("#state");
 
-        // Account Info
-        this.accountInformationText =
-            page.getByText("Enter Account Information");
+    this.cityInput = page.locator("#city");
 
-        // Title
-        this.mrTitleRadio =
-            page.locator("#id_gender1");
+    this.zipcodeInput = page.locator("#zipcode");
 
-        // Credentials
-        this.passwordInput =
-            page.locator("#password");
+    this.mobileNumberInput = page.locator("#mobile_number");
 
-        // DOB
-        this.dayDropdown =
-            page.locator("#days");
+    // Button
+    this.createAccountButton = page.getByRole("button", {
+      name: "Create Account",
+    });
 
-        this.monthDropdown =
-            page.locator("#months");
+    // Success
+    this.accountCreatedText = page.getByText("Account Created!");
 
-        this.yearDropdown =
-            page.locator("#years");
+    this.continueButton = page.getByRole("link", {
+      name: "Continue",
+    });
+  }
 
-        // Checkboxes
-        this.newsletterCheckbox =
-            page.locator("#newsletter");
+  // Verify Section
 
-        this.offersCheckbox =
-            page.locator("#optin");
+  async verifyAccountInformationSection(): Promise<void> {
+    await expect(this.accountInformationText).toBeVisible();
+  }
 
-        // Personal Info
-        this.firstNameInput =
-            page.locator("#first_name");
+  // Fill Form
 
-        this.lastNameInput =
-            page.locator("#last_name");
+  async fillAccountDetailsForm(userData: UserData): Promise<void> {
+    await this.mrTitleRadio.check();
 
-        this.addressInput =
-            page.locator("#address1");
+    await this.passwordInput.fill(userData.password);
 
-        // Address Info
-        this.countryDropdown =
-            page.locator("#country");
+    await this.dayDropdown.selectOption("10");
 
-        this.stateInput =
-            page.locator("#state");
+    await this.monthDropdown.selectOption("5");
 
-        this.cityInput =
-            page.locator("#city");
+    await this.yearDropdown.selectOption("2000");
 
-        this.zipcodeInput =
-            page.locator("#zipcode");
+    await this.newsletterCheckbox.check();
 
-        this.mobileNumberInput =
-            page.locator("#mobile_number");
+    await this.offersCheckbox.check();
 
-        // Button
-        this.createAccountButton =
-            page.getByRole("button", {
-                name: "Create Account"
-            });
+    await this.firstNameInput.fill(userData.firstName);
 
-        // Success
-        this.accountCreatedText =
-            page.getByText("Account Created!");
+    await this.lastNameInput.fill(userData.lastName);
 
-        this.continueButton = page.getByRole("link", {
-            name: "Continue"
-        });
-    }
+    await this.addressInput.fill(userData.address);
 
-    // Verify Section
+    await this.countryDropdown.selectOption("India");
 
-    async verifyAccountInformationSection(): Promise<void> {
+    await this.stateInput.fill(userData.state);
 
-        await expect(
-            this.accountInformationText
-        ).toBeVisible();
-    }
+    await this.cityInput.fill(userData.city);
 
-    // Fill Form
+    await this.zipcodeInput.fill(userData.zipcode);
 
-    async fillAccountDetailsForm(userData: UserData): Promise<void> {
+    await this.mobileNumberInput.fill(userData.mobileNumber);
+  }
 
-        await this.mrTitleRadio.check();
+  // Create Account
 
-        await this.passwordInput.fill(userData.password);
+  async clickCreateAccountButton(): Promise<void> {
+    await this.createAccountButton.click();
+  }
 
-        await this.dayDropdown.selectOption("10");
+  // Success Validation
 
-        await this.monthDropdown.selectOption("5");
+  async verifyAccountCreatedText(): Promise<void> {
+    await expect(this.accountCreatedText).toBeVisible();
+  }
 
-        await this.yearDropdown.selectOption("2000");
-
-        await this.newsletterCheckbox.check();
-
-        await this.offersCheckbox.check();
-
-        await this.firstNameInput.fill(userData.firstName);
-
-        await this.lastNameInput.fill(userData.lastName);
-
-        await this.addressInput.fill(userData.address);
-
-        await this.countryDropdown.selectOption("India");
-
-        await this.stateInput.fill(userData.state);
-
-        await this.cityInput.fill(userData.city);
-
-        await this.zipcodeInput.fill(userData.zipcode);
-
-        await this.mobileNumberInput.fill(userData.mobileNumber);
-    }
-
-    // Create Account
-
-    async clickCreateAccountButton(): Promise<void> {
-
-        await this.createAccountButton.click();
-    }
-
-    // Success Validation
-
-    async verifyAccountCreatedText(): Promise<void> {
-
-        await expect(this.accountCreatedText).toBeVisible();
-    }
-
-    async clickContinueButton(): Promise<void> {
-
-        await this.continueButton.click();
-    }
+  async clickContinueButton(): Promise<void> {
+    await this.continueButton.click();
+  }
 }

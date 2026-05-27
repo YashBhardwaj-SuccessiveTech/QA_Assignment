@@ -2,27 +2,25 @@ import { faker } from "@faker-js/faker";
 import { UserData } from "../types/userData.js";
 
 export function generateUserData(): UserData {
+  return {
+    name: faker.person.fullName(),
 
-    return {
+    email: faker.internet.email(),
 
-        name: faker.person.fullName(),
+    password: faker.internet.password(),
 
-        email: faker.internet.email(),
+    firstName: faker.person.firstName(),
 
-        password: faker.internet.password(),
+    lastName: faker.person.lastName(),
 
-        firstName: faker.person.firstName(),
+    address: faker.location.streetAddress(),
 
-        lastName: faker.person.lastName(),
+    state: faker.location.state(),
 
-        address: faker.location.streetAddress(),
+    city: faker.location.city(),
 
-        state: faker.location.state(),
+    zipcode: faker.location.zipCode(),
 
-        city: faker.location.city(),
-
-        zipcode: faker.location.zipCode(),
-
-        mobileNumber: faker.phone.number()
-    };
+    mobileNumber: faker.phone.number(),
+  };
 }

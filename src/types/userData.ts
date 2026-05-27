@@ -1,22 +1,21 @@
 export type UserData = {
+  name: string;
 
-    name: string;
+  email: string;
 
-    email: string;
+  password: string;
 
-    password: string;
+  firstName: string;
 
-    firstName: string;
+  lastName: string;
 
-    lastName: string;
+  address: string;
 
-    address: string;
+  state: string;
 
-    state: string;
+  city: string;
 
-    city: string;
+  zipcode: string;
 
-    zipcode: string;
-
-    mobileNumber: string;
+  mobileNumber: string;
 };

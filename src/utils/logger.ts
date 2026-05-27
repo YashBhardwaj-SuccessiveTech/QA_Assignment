@@ -5,7 +5,7 @@ export enum LogLevel {
   DEBUG = "DEBUG",
   INFO = "INFO",
   WARN = "WARN",
-  ERROR = "ERROR"
+  ERROR = "ERROR",
 }
 
 export class Logger {
@@ -16,7 +16,10 @@ export class Logger {
   constructor(testName: string) {
     this.testName = testName;
     this.logDir = "reports/logs";
-    this.logFile = path.join(this.logDir, `${Logger.sanitizeFileName(testName)}.log`);
+    this.logFile = path.join(
+      this.logDir,
+      `${Logger.sanitizeFileName(testName)}.log`,
+    );
 
     fs.mkdirSync(this.logDir, { recursive: true });
     this.clearLog();
