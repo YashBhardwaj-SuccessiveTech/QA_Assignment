@@ -88,40 +88,40 @@ export class HomePage{
 
     }
 
-    async navigateHomePage(){
+    async navigateHomePage(): Promise<void>{
         await this.page.goto("https://www.automationexercise.com/");
     }
 
     // chat Gpt 
-    async verifyHeaderNavigationMenu() {
+    async verifyHeaderNavigationMenu(): Promise<void> {
         await expect(this.headerNavbar).toBeVisible();
     }
 
-    async verifyHomeSlider() {
+    async verifyHomeSlider(): Promise<void> {
         await expect(this.homeSlider).toBeVisible();
     }
 
-    async verifyCategorySection() {
+    async verifyCategorySection(): Promise<void> {
         await expect(this.categorySection).toBeVisible();
     }
 
-    async verifyBrandsSection() {
+    async verifyBrandsSection(): Promise<void> {
         await expect(this.brandsSection).toBeVisible();
     }
 
-    async verifyFeatureItemsSection() {
+    async verifyFeatureItemsSection(): Promise<void> {
         await expect(this.featureItemsSection).toBeVisible();
     }
 
-    async verifyRecommendedItemsSection() {
+    async verifyRecommendedItemsSection(): Promise<void> {
         await expect(this.recommendedItemsSection).toBeVisible();
     }
 
-    async verifySubscriptionSection() {
+    async verifySubscriptionSection(): Promise<void> {
         await expect(this.subscriptionSection).toBeVisible();
     }
 
-    async verifyNavigationMenu(menuName: string) {
+    async verifyNavigationMenu(menuName: string): Promise<void> {
 
         const menu = this.headerNavbar.getByRole('link', {
             name: menuName
@@ -132,7 +132,7 @@ export class HomePage{
 
     // Scenario :- 03
 
-    async setTabletViewport() {
+    async setTabletViewport(): Promise<void> {
 
     await this.page.setViewportSize({
             width: 768,
@@ -142,18 +142,18 @@ export class HomePage{
         await this.navigateHomePage();
     }
 
-    async refreshPage() {
+    async refreshPage(): Promise<void> {
 
         await this.page.reload();
     }
 
-    async verifyCategoryAndProductAlignment() {
+    async verifyCategoryAndProductAlignment(): Promise<void> {
 
         await expect(this.leftSidebar).toBeVisible();
 
         await expect(this.productSection).toBeVisible();
     }
-    async verifyNoElementOverlap() {
+    async verifyNoElementOverlap(): Promise<void> {
 
         const sidebarBox = await this.leftSidebar.boundingBox();
 
@@ -172,19 +172,19 @@ export class HomePage{
 
 
     // Second Scenario 
-    async pressTabKey() {
+    async pressTabKey(): Promise<void> {
 
         await this.page.keyboard.press('Tab');
     }
 
-    async verifyHeaderFocus() {
+    async verifyHeaderFocus(): Promise<void> {
 
         const focusedElement = this.page.locator(':focus');
 
         await expect(focusedElement).toBeVisible();
     }
 
-    async clickNavigationMenu(menuName: string) {
+    async clickNavigationMenu(menuName: string): Promise<void> {
 
         const menu = this.headerNavbar.getByRole('link', {
             name: menuName
@@ -193,7 +193,7 @@ export class HomePage{
         await menu.click();
     }
 
-    async verifyPageNavigation(expectedUrl: string) {
+    async verifyPageNavigation(expectedUrl: string): Promise<void> {
 
         await expect(this.page).toHaveURL(
             new RegExp(`${expectedUrl}`)
@@ -202,13 +202,13 @@ export class HomePage{
 
     async verifyLoggedInBanner(
         username: string
-    ) {
+    ): Promise<void> {
 
         await expect(this.loggedInBanner)
             .toContainText(username);
     }
 
-    async verifyLogoutButton() {
+    async verifyLogoutButton(): Promise<void> {
 
         await expect(this.logoutButton)
             .toBeVisible();

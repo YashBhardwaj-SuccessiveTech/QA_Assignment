@@ -118,7 +118,7 @@ export class AccountPage {
 
     // Verify Section
 
-    async verifyAccountInformationSection() {
+    async verifyAccountInformationSection(): Promise<void> {
 
         await expect(
             this.accountInformationText
@@ -127,7 +127,7 @@ export class AccountPage {
 
     // Fill Form
 
-    async fillAccountDetailsForm(userData: UserData) {
+    async fillAccountDetailsForm(userData: UserData): Promise<void> {
 
         await this.mrTitleRadio.check();
 
@@ -162,19 +162,19 @@ export class AccountPage {
 
     // Create Account
 
-    async clickCreateAccountButton() {
+    async clickCreateAccountButton(): Promise<void> {
 
         await this.createAccountButton.click();
     }
 
     // Success Validation
 
-    async verifyAccountCreatedText() {
+    async verifyAccountCreatedText(): Promise<void> {
 
         await expect(this.accountCreatedText).toBeVisible();
     }
 
-    async clickContinueButton() {
+    async clickContinueButton(): Promise<void> {
 
         await this.continueButton.click();
     }

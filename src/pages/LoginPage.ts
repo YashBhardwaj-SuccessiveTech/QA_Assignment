@@ -61,21 +61,21 @@ export class LoginPage {
         );
     }
 
-    async verifyLoginFormSection() {
+    async verifyLoginFormSection(): Promise<void> {
 
         await expect(
             this.loginFormSection
         ).toBeVisible();
     }
 
-    async verifySignupFormSection() {
+    async verifySignupFormSection(): Promise<void> {
 
         await expect(
             this.signupFormSection
         ).toBeVisible();
     }
 
-    async verifyTextVisibility(text: string) {
+    async verifyTextVisibility(text: string): Promise<void> {
 
         await expect(
             this.page.getByText(text)
@@ -85,14 +85,14 @@ export class LoginPage {
     async enterSignupNameAndEmail(
         name: string,
         email: string
-    ) {
+    ): Promise<void> {
 
         await this.signupNameInput.fill(name);
 
         await this.signupEmailInput.fill(email);
     }
 
-    async clickSignupButton() {
+    async clickSignupButton(): Promise<void> {
 
         await this.signupButton.click();
     }
@@ -100,7 +100,7 @@ export class LoginPage {
     async enterLoginCredentials(
         email: string,
         password: string
-    ) {
+    ): Promise<void> {
 
         await this.loginEmailInput.fill(email);
 
@@ -109,7 +109,7 @@ export class LoginPage {
         await this.loginButton.click();
     }
 
-    async verifyLoginErrorMessage() {
+    async verifyLoginErrorMessage(): Promise<void> {
 
     await expect(
             this.loginErrorMessage

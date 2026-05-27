@@ -1,68 +1,14 @@
-{
-  "name": "qa_assignment",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "cucumber-js",
-    "test:headed": "cucumber-js --world-parameters '{\"headless\":false}'",
-    "test:parallel": "cucumber-js --parallel 2"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
-  "devDependencies": {
-    "@cucumber/cucumber": "^12.9.0",
-    "@playwright/test": "^1.60.0",
-    "@types/node": "^25.9.1",
-    "ts-node": "^10.9.2",
-    "typescript": "^6.0.3"
-  }
-}
+For allure report generation and running all the test cases : - 
+- npm run test:all
 
+For allure report : -
+- npm run report:serve
 
-first package.json 
+For running all the test cases : -
+- npm run test
 
-{
-  "name": "playwright_assignment",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "cucumber-js",
-    "test:headed": "HEADLESS=false cucumber-js",
-    "test:tags": "cucumber-js --tags"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "@cucumber/cucumber": "^12.9.0",
-    "@playwright/test": "^1.60.0",
-    "@types/node": "^25.9.1",
-    "ts-node": "^10.9.2"
-  },
-  "dependencies": {
-    "@faker-js/faker": "^10.4.0",
-    "typescript": "^6.0.3"
-  }
-}
-
-
-ts-config.json
-{
-  "compilerOptions": {
-    "target": "ES2020",
-    "module": "node16",
-    "moduleResolution": "node16",
-    "esModuleInterop": true,
-    "strict": true,
-    "outDir": "dist",
-    "rootDir": "src",
-    "resolveJsonModule": true,
-    "noImplicitAny": true
-  },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules", "dist"]
-}
+For running tag specific test cases : - 
+- npm run test:ui          # Runs the complete UI automation suites 
+- npm run test:api         # Runs the complete backend API verification test suites 
+- npm run test:smoke       # Executes a targeted subset of critical core paths (UI-005, UI-016, API-001, API-007)
+- npm run test:regression  # Executes the entirety of the automated test ecosystem 
