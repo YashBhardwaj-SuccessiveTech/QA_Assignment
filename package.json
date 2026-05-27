@@ -7,10 +7,9 @@
   "scripts": {
     "test": "cucumber-js",
     "test:headed": "HEADLESS=false cucumber-js",
-    "test:tags": "cucumber-js --tags",
     "test:all": "npx cucumber-js --parallel 1 -f allure-cucumberjs/reporter --format-options '{\"resultsDir\": \"allure-results\"}'",
-    "test:smoke": "npx cucumber-js --parallel 1 --tags '@smoke' -f allure-cucumberjs/reporter --format-options '{\"resultsDir\": \"allure-results\"}'",
     "report:serve": "allure serve allure-results",
+    "test:smoke": "npx cucumber-js --parallel 1 --tags '@smoke' -f allure-cucumberjs/reporter --format-options '{\"resultsDir\": \"allure-results\"}'",
     "test:ui": "npx cucumber-js --tags '@ui'",
     "test:api": "npx cucumber-js --tags '@api'",
     "test:regression": "npx cucumber-js --tags '@regression'"

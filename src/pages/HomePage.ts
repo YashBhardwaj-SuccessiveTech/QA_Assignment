@@ -1,4 +1,5 @@
 import { expect, type Locator, type Page } from "@playwright/test";
+import { EnvironmentConfig } from "../config/environment.config.js";
 
 export class HomePage {
   readonly page: Page;
@@ -88,7 +89,7 @@ export class HomePage {
   }
 
   async navigateHomePage(): Promise<void> {
-    await this.page.goto("https://www.automationexercise.com/");
+    await this.page.goto(EnvironmentConfig.web.baseUrl);
   }
 
   // chat Gpt
