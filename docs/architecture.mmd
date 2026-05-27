@@ -1,0 +1,40 @@
+%% Project folder structure diagram for QA_Assignment
+
+```mermaid
+graph TD
+  Repo[QA_Assignment]
+  Repo --> package.json
+  Repo --> cucumber.js
+  Repo --> playwright.config.ts
+  Repo --> tsconfig.json
+  Repo --> readme.md
+  Repo --> src
+  Repo --> allure-results
+  Repo --> reports
+  src --> features[features/]
+  src --> steps[steps/]
+  src --> pages[pages/]
+  src --> api[api/]
+  src --> hooks[hooks/]
+  src --> utils[utils/]
+  features --> ui[ui/]
+  features --> apiF[api/]
+  pages --> BasePage[BasePage.ts]
+  pages --> HomePage[HomePage.ts]
+  pages --> LoginPage[LoginPage.ts]
+  pages --> SignupPage[SignupPage.ts]
+  pages --> ProductsPage[ProductsPage.ts]
+  pages --> ProductDetailPage[ProductDetailPage.ts]
+  pages --> CartPage[CartPage.ts]
+  pages --> ContactUsPage[ContactUsPage.ts]
+  api --> apiClient[apiClient.ts]
+  hooks --> world[world.ts]
+  hooks --> hooksFile[hooks.ts]
+  utils --> types[types.ts]
+  utils --> dataGenerator[dataGenerator.ts]
+  utils --> logger[logger.ts]
+  Repo --> config[config/]
+  config --> env[env.ts]
+  %% Optional CI workflows folder (not present in this repo by default)
+  %% Repo --> github[.github/workflows/]
+```
